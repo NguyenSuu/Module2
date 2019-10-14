@@ -88,7 +88,7 @@ public class ReadNumbersIntoWords {
                 result2 = " thirty ";
                 break;
             case 4:
-                result2 = " fourty ";
+                result2 = " forty ";
                 break;
             case 5:
                 result2 = " fifty ";
