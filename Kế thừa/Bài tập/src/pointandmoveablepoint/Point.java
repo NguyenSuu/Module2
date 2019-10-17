@@ -1,14 +1,14 @@
-package point2dandpoint3d;
+package pointandmoveablepoint;
 
 import java.util.Arrays;
 
-public class Point2D {
+public class Point {
     private double x=0.0d;
     private double y=0.0d;
-    public Point2D(){
+    public Point(){
 
     }
-    public Point2D(double x,double y){
+    public Point(double x,double y){
         this.x=x;
         this.y=y;
     }
