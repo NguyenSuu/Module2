@@ -1,8 +1,20 @@
 package adameva;
 
-public class Eva {
+public class Human {
+    private String name;
     private double weight;
     private Apple apple;
+
+    public String getName() {
+        return name;
+    }
+    public Human(Apple apple){
+        this.apple=apple;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public double getWeight() {
         return weight;
@@ -20,15 +32,15 @@ public class Eva {
         this.apple = apple;
     }
 
-    public Eva(){
+    public Human(){
 
     }
     public void getEat(){
-        Apple.isAte();
+        apple.isAte();
         weight++;
     }
     @Override
     public String toString(){
-        return "weight= "+weight+Apple.getWeight();
+        return "weight of"+name+" = "+weight+" kg";
     }
 }

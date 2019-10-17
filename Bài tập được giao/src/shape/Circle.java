@@ -18,4 +18,8 @@ public class Circle {
     public double getArea(){
         return radius*radius*Math.PI;
     }
+
+    public void paint() {
+        System.out.println("Loading......");
+    }
 }

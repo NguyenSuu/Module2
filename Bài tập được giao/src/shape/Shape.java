@@ -6,6 +6,13 @@ public class Shape {
     private Rectangle rectangle;
     private Circle circle;
 
+    public Shape() {
+    }
+    public Shape(Square square,Rectangle rectangle,Circle circle){
+        this.square=square;
+        this.rectangle=rectangle;
+        this.circle=circle;
+    }
     public Circle getCircle() {
         return circle;
     }
@@ -15,7 +22,7 @@ public class Shape {
     }
 
     public Rectangle getRectangle() {
-        return rectangle;
+        return this.rectangle;
     }
 
     public void setRectangle(Rectangle rectangle) {
@@ -23,14 +30,10 @@ public class Shape {
     }
 
     public Square getSquare() {
-        return square;
+        return this.square;
     }
 
     public void setSquare(Square square) {
         this.square = square;
     }
-
-    public Shape() {
-    }
-
 }

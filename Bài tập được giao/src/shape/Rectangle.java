@@ -1,8 +1,8 @@
 package shape;
 
 public class Rectangle {
-    private static double width;
-    private static double height;
+    private double width;
+    private double height;
     public Rectangle(){
     }
     public Rectangle(double width, double height){
@@ -10,25 +10,25 @@ public class Rectangle {
         this.height=height;
     }
 
-    public static double getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public static void setWidth(double width) {
-        Rectangle.width = width;
+    public void setWidth(double width) {
+        this.width = width;
     }
 
-    public static double getHeight() {
+    public  double getHeight() {
         return height;
     }
 
-    public static void setHeight(double height) {
-        Rectangle.height = height;
+    public void setHeight(double height) {
+        this.height = height;
     }
     public double getArea(){
         return width*height;
     }
-    public static void paint(){
+    public  void paint(){
         System.out.println("Illustration");
         for(int i=0;i<height;i++){
             for (int j=0;j<width;j++){

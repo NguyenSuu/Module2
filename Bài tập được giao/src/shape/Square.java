@@ -1,8 +1,7 @@
 package shape;
 
 public class Square{
-    private static double side;
-//    private double side;
+    private double side;
 
     public Square(){
     }
@@ -10,18 +9,18 @@ public class Square{
         this.side=side;
     }
 
-    public static double getSide() {
+    public double getSide() {
         return side;
     }
 
-    public static void setSide(double side) {
-        Square.side = side;
+    public void setSide(double side) {
+        this.side = side;
     }
 
-    public static double getArea(){
+    public double getArea(){
         return side*side;
     }
-    public static void paint(){
+    public void paint(){
         System.out.println("Illustration");
         for(int i=0;i<side;i++){
             for (int j=0;j<side;j++){

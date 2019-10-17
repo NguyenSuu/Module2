@@ -1,22 +1,19 @@
 package adameva;
 
 public class Apple {
-    private static double weight;
+    private  static int weight;
     public Apple(){
     }
 
-    public static double getWeight() {
+    public  static int getWeight() {
         return weight;
     }
 
-    public static void setWeight(double weight) {
+    public  static void setWeight(int weight) {
         Apple.weight = weight;
     }
     public static void isAte(){
         Apple.weight--;
     }
-    @Override
-    public String toString(){
-        return "weight also "+weight;
-    }
+
 }
