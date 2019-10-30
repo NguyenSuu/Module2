@@ -11,5 +11,11 @@ public class TestMyLinkedList {
         ll.add(4,9);
         ll.add(4,9);
         ll.printList();
+
+        System.out.println(ll.get(1).getData());
+
+
+
+
     }
 }

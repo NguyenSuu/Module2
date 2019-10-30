@@ -9,6 +9,7 @@ public class MyList<E> {
     public MyList(){
         elements = new Object[DEFAULT_CAPACITY];
     }
+
     private void ensureCapa(){
         int newSize = elements.length*2;
         elements = Arrays.copyOf(elements,newSize);

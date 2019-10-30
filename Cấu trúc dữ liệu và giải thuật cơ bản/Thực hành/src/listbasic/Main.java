@@ -1,5 +1,5 @@
 package listbasic;
-
+import java.lang.Throwable;
 public class Main {
     public static void main(String[] args) {
         MyList<Integer> listInteger = new MyList<Integer>();
@@ -13,11 +13,8 @@ public class Main {
         System.out.println("element 1: "+listInteger.get(1));
         System.out.println("element 2: "+listInteger.get(2));
 
-        listInteger.add(-1);
-//        System.out.println("element 6: "+listInteger.get(6));
-//        listInteger.get(5);
-        System.out.println("element 5: " + listInteger.get(5));
-
+        listInteger.get(-1);
+        System.out.println("element -1: " + listInteger.get(-1));
 
     }
 }
