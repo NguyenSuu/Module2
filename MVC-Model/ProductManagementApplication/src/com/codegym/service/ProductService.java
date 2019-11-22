@@ -15,5 +15,5 @@ public interface ProductService {
 
     void remove(int id);
 
-    Product findByName(String name);
+    List<Product> findByName(String name);
 }

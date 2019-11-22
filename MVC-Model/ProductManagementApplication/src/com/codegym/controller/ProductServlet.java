@@ -1,6 +1,7 @@
 package com.codegym.controller;
 
 import com.codegym.model.Product;
+import com.codegym.service.ProductJDBCServiceImpl;
 import com.codegym.service.ProductService;
 import com.codegym.service.ProductServiceImpl;
 
@@ -15,7 +16,7 @@ import java.util.List;
 
 @WebServlet(name = "ProductServlet",urlPatterns = "/products")
 public class ProductServlet extends HttpServlet {
-    private ProductService productService=new ProductServiceImpl();
+    private ProductService productService=new ProductJDBCServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action=request.getParameter("action");
         if(action==null){
@@ -31,8 +32,6 @@ public class ProductServlet extends HttpServlet {
             case "delete":
                 deleteProduct(request,response);
                 break;
-//            case "search":
-//                search();
             default:
                 break;
         }
@@ -43,19 +42,18 @@ public class ProductServlet extends HttpServlet {
         if(action==null){
             action="";
         }
-//        search(request,response);
         switch (action){
             case "create":
-                showCreateProduct(request,response);
+                showCreateProductForm(request,response);
                 break;
             case "edit":
-                showEdit(request,response);
+                showEditForm(request,response);
                 break;
             case "delete":
                 showDeleteForm(request,response);
                 break;
             case "view":
-                showView(request,response);
+                viewProduct(request,response);
                 break;
             case "search":
                 search(request,response);
@@ -67,7 +65,7 @@ public class ProductServlet extends HttpServlet {
     }
     protected void search(HttpServletRequest request,HttpServletResponse response){
         String name=request.getParameter("name");
-        Product product=this.productService.findByName(name);
+        List<Product> product=this.productService.findByName(name);
         RequestDispatcher dispatcher;
         if(product==null){
             dispatcher=request.getRequestDispatcher("error-404.jsp");
@@ -181,7 +179,7 @@ public class ProductServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    protected void showCreateProduct(HttpServletRequest request,HttpServletResponse response){
+    protected void showCreateProductForm(HttpServletRequest request, HttpServletResponse response){
         RequestDispatcher dispatcher=request.getRequestDispatcher("product/create.jsp");
         try {
             dispatcher.forward(request,response);
@@ -193,7 +191,7 @@ public class ProductServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    protected void showView(HttpServletRequest request,HttpServletResponse response){
+    protected void viewProduct(HttpServletRequest request, HttpServletResponse response){
         int id=Integer.parseInt(request.getParameter("id"));
         Product product=this.productService.findById(id);
         RequestDispatcher dispatcher;
@@ -215,7 +213,7 @@ public class ProductServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    protected void showEdit(HttpServletRequest request,HttpServletResponse response){
+    protected void showEditForm(HttpServletRequest request, HttpServletResponse response){
         RequestDispatcher dispatcher=request.getRequestDispatcher("product/edit.jsp");
         try {
             dispatcher.forward(request,response);
