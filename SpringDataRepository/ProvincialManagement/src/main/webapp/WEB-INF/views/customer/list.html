@@ -12,10 +12,10 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                 <h1 class="h2">Customer</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
-                    <a href="/create-customer" class="btn btn-primary">Create new customer</a>
-<!--                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formCreate">Create-->
-<!--                        new customer-->
-<!--                    </button>-->
+<!--                    <a href="/create-customer" class="btn btn-primary">Create new customer</a>-->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formCreate">Create
+                        new customer
+                    </button>
 
                 </div>
             </div>
@@ -44,55 +44,67 @@
                     </tbody>
 
                 </table>
+                <div>
+                    <a th:href="@{'/'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
+                    <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
+                    <a th:href="@{'/'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+                </div>
             </div>
         </main>
     </div>
 </div>
 
 <!--Create customer-->
-<!-- The Modal -->
+<!-- The Modal-->
 
-<!--<div class="modal" th:id="formCreate">-->
-<!--    <div class="modal-dialog">-->
-<!--        <div class="modal-content">-->
+<div class="modal" th:id="formCreate">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-<!--            &lt;!&ndash; Modal Header &ndash;&gt;-->
-<!--            <div class="modal-header">-->
-<!--                <h4 class="modal-title">Information customer</h4>-->
-<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-<!--            </div>-->
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Information customer</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
-<!--            &lt;!&ndash; Modal body &ndash;&gt;-->
-<!--            <div class="modal-body">-->
-<!--                &lt;!&ndash;                <th:block th:if="${message}">&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <p th:text="${message}"></p>&ndash;&gt;-->
-<!--                &lt;!&ndash;                </th:block>&ndash;&gt;-->
-<!--                <form th:action="@{/create-customer}" th:object="${customer}" method="post">-->
-<!--                    <div class="container">-->
-<!--                        <div>-->
-<!--                            <label class="mb-2 mr-sm-2">First name:</label>-->
-<!--                            <input type="text" th:field="*{firstName}"/>-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <label class="mb-2 mr-sm-2">Last name:</label>-->
-<!--                            <input type="text" th:field="*{lastName}"/>-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <select th:field="*{province}">-->
-<!--                                <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Modal footer &ndash;&gt;-->
-<!--            <div class="modal-footer">-->
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!--                <th:block th:if="${message}">-->
+                <!--                    <p th:text="${message}"></p>-->
+                <!--                </th:block>-->
+                <form th:action="@{/create-customer}" th:object="${customer}" method="post">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4"><label class="mb-2 mr-sm-2">First name:</label></div>
+                            <div class="col-8"> <input type="text" th:field="*{firstName}"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4"> <label class="mb-2 mr-sm-2">Last name:</label></div>
+                            <div class="col-8"><input type="text" th:field="*{lastName}"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Province:</div>
+                            <div class="col-8"> <select th:field="*{province}">
+                                <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
+                            </select></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4"><input type="submit" class="btn btn-info" value="Create"></div>
+                            <div class="col-4" ><button type="button" class="btn btn-danger" data-dismiss="modal">Close</button></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+<!--                <input type="submit" class="btn btn-info" value="Create">-->
 <!--                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
-<!--            </div>-->
+            </div>
 
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+        </div>
+    </div>
+</div>
 
 </body>
 <th:block th:replace="/customer/layout::footer"></th:block>

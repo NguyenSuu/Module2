@@ -5,9 +5,15 @@ import cms.model.Province;
 import cms.service.CustomerService;
 import cms.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+
 
 @Controller
 public class CustomerController {
@@ -23,28 +29,26 @@ public class CustomerController {
         return provinceService.findAll();
     }
 
-    @GetMapping("/customers")
-    public ModelAndView listCustomers(){
-        Iterable<Customer> customers = customerService.findAll();
+    @GetMapping("/")
+    public ModelAndView listCustomers(Pageable page){
+        Page<Customer> customers = customerService.findAll(page);
         ModelAndView modelAndView = new ModelAndView("/customer/list");
         modelAndView.addObject("customers", customers);
+        modelAndView.addObject("customer",new Customer());
         return modelAndView;
     }
 
-    @GetMapping("/create-customer")
-    public ModelAndView showCreateForm(){
-        ModelAndView modelAndView = new ModelAndView("/customer/create");
-        modelAndView.addObject("customer", new Customer());
-        return modelAndView;
-    }
+//    @GetMapping("/create-customer")
+//    public ModelAndView showCreateForm(){
+//        ModelAndView modelAndView = new ModelAndView("/customer/create");
+//        modelAndView.addObject("customer", new Customer());
+//        return modelAndView;
+//    }
 
     @PostMapping("/create-customer")
-    public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer){
+    public String saveCustomer(@ModelAttribute("customer") Customer customer){
         customerService.save(customer);
-        ModelAndView modelAndView = new ModelAndView("/customer/create");
-        modelAndView.addObject("customer", new Customer());
-        modelAndView.addObject("message", "New customer created successfully");
-        return modelAndView;
+        return "redirect:/";
     }
 
     @GetMapping("/edit-customer/{id}")
@@ -87,6 +91,6 @@ public class CustomerController {
     @PostMapping("/delete-customer")
     public String deleteCustomer(@ModelAttribute("customer") Customer customer){
         customerService.remove(customer.getId());
-        return "redirect:customers";
+        return "redirect:/";
     }
 }
