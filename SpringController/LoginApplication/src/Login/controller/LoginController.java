@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import Login.model.Login;
 import Login.model.User;
+
+import javax.swing.*;
+import java.awt.*;
+
 @Controller
 public class LoginController {
 
@@ -20,7 +24,11 @@ public class LoginController {
     public ModelAndView login(@ModelAttribute("login") Login login){
         User user = UserDao.checkLogin(login);
         if(user == null){
-            ModelAndView modelAndView = new ModelAndView("error");
+            ModelAndView modelAndView = new ModelAndView("home");
+            modelAndView.addObject("message","User or password is wrong!");
+//            Component panel = null;
+//            JOptionPane.showMessageDialog(panel, "User or password is wrong!", "Warning",
+//                    JOptionPane.WARNING_MESSAGE);
             return modelAndView;
         } else {
             ModelAndView modelAndView = new ModelAndView("user");

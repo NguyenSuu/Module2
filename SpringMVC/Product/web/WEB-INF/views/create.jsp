@@ -18,9 +18,7 @@
     <div class="container">
         <h1>Create New Product</h1>
         <a href="/products" class="btn btn-primary" role="button">Back</a>
-        <c:if test="${message !=null}">
-            <span class="message">${message}</span>
-        </c:if>
+
     </div>
 </div>
 <div class="container">
@@ -39,6 +37,13 @@
                <tr>
                    <td><form:label path="price">Price</form:label></td>
                    <td><form:input path="price"/></td>
+               </tr>
+               <tr>
+                   <td> </td>
+                   <td class="text-success"><c:if test="${message !=null}">
+                       <span class="message">${message}</span>
+                   </c:if>
+                   </td>
                </tr>
                <tr>
                    <td></td>

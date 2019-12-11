@@ -9,21 +9,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@ include file="/bootstrap.jsp"%>
     <title>Login</title>
+    <style>
+        body{
+            background-image: url('https://bom.to/AsqxuW');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        .container{
+            color: whitesmoke;
+            margin: 300px;
+        }
+    </style>
 </head>
 <body>
-<h3>Home</h3>
+<div class="container">
+    <h1 style="margin-left:100px ">Login</h1>
+
 <form:form action="login" method="post" modelAttribute="login">
     <fieldset>
-        <legend>Login</legend>
         <table>
             <tr>
-                <td><form:label path="account">Account:</form:label></td>
-                <td><form:input path="account"  /></td>
+                <td style="color: whitesmoke;text-align: right"><form:label path="account">Account:</form:label></td>
+                <td><form:input path="account"/></td>
             </tr>
             <tr>
-                <td><form:label path="password">Password:</form:label></td>
+                <td style="color: whitesmoke"><form:label path="password">Password:</form:label></td>
                 <td><form:input path="password"/></td>
+            </tr>
+            <tr>
+
+                <td></td>
+                <td class="text-warning"><c:if test="${message !=null}">
+                    <span class="message">${message}</span>
+                </c:if></td>
             </tr>
             <tr>
                 <td></td>
@@ -32,5 +53,6 @@
         </table>
     </fieldset>
 </form:form>
+</div>
 </body>
 </html>

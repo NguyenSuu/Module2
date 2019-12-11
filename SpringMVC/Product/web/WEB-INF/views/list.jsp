@@ -17,6 +17,7 @@
     <div class="container">
         <h1>Product</h1>
         <a href="/create" class="btn btn-info">Add new product</a>
+        <div></div>
         <p>There are ${products.size()} products in the list</p>
     </div>
 </div>

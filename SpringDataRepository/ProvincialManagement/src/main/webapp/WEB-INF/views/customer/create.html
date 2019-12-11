@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/customer/layout::headerfiles">
+</head>
+<body>
+    <header th:replace="/customer/layout::menu"></header>
+
+    <form th:action="@{/create-customer}" th:object="${customer}" method="post">
+        <div class="container">
+            <h2>Create customer</h2>
+            <th:block th:if="${message}">
+                <p th:text="${message}"></p>
+            </th:block>
+            <div class="row">
+                <div class="col-2"><label class="mb-2 mr-sm-2">First name:</label></div>
+                <div class="col-10"> <input type="text" th:field="*{firstName}"/></div>
+            </div>
+            <div class="row">
+                <div class="col-2"> <label class="mb-2 mr-sm-2">Last name:</label></div>
+                <div class="col-10"><input type="text" th:field="*{lastName}"/></div>
+            </div>
+            <div class="row">
+                <div class="col-2">Province:</div>
+                <div class="col-10"> <select th:field="*{province}">
+                    <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select></div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-10"><input type="submit" class="btn btn-info" value="Create"></div>
+
+            </div>
+        </div>
+    </form>
+</body>
+<th:block th:replace="/customer/layout::footer"></th:block>
+<th:block th:replace="/customer/layout::jsfiles"></th:block>
+</html>

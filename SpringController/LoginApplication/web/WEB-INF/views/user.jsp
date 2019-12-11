@@ -8,13 +8,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <%@ include file="/bootstrap.jsp"%>
+    <title>Welcome</title>
+    <style>
+        body{
+            background-image: url("https://bom.to/KBefdR");
+            background-repeat: no-repeat ;
+            background-attachment:fixed ;
+            background-size: 100% 100%;
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome</h1>
-<h3>Account:${user.account}</h3>
-<h3>Name:${user.name}</h3>
-<h3>Email:${user.email}</h3>
-<h3>Age:${user.age}</h3>
+<div class="container text-white">
+    <h1 class="text text-warning">Welcome</h1>
+    <h3>Account:${user.account}</h3>
+    <h3>Name:${user.name}</h3>
+    <h3>Email:${user.email}</h3>
+    <h3>Age:${user.age}</h3>
+</div>
+
 </body>
 </html>

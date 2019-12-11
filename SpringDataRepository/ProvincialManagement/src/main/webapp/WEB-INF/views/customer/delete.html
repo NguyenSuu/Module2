@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/customer/layout::headerfiles">
+</head>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<body>
+<header th:replace="/customer/layout::menu"></header>
+
+<form th:action="@{/delete-customer}" th:object="${customer}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <div class="container">
+        <h2>Delete customer</h2>
+        <div class="row">
+            <div class="col-2"><label class="mb-2 mr-sm-2">First name:</label></div>
+            <div class="col-10"><p th:text="${customer.firstName}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-2"> <label class="mb-2 mr-sm-2">Last name:</label></div>
+            <div class="col-10"><p th:text="${customer.lastName}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-2">Province:</div>
+            <div class="col-10"> <p th:text="${customer.province.name}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-10"><input type="submit" class="btn btn-danger" value="Delete"></div>
+
+        </div>
+    </div>
+</form>
+</body>
+<th:block th:replace="/customer/layout::footer"></th:block>
+<th:block th:replace="/customer/layout::jsfiles"></th:block>
+</html>

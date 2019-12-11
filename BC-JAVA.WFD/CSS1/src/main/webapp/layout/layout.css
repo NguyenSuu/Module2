@@ -1,0 +1,40 @@
+
+#head{
+    height: 100px;
+    margin-bottom: 10px;
+    border: aqua solid 5px;
+}
+#head-link{
+    height: 50px;
+    border: #ff8c6d solid 5px;
+    margin-bottom: 10px;
+}
+#left{
+    height:500px ;
+    width: 13%;
+    border: #3563ff solid 5px;
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 10px;
+}
+#right{
+    height:500px ;
+    border: #ffd836 solid 5px;
+    float: right;
+    width: 14%;
+
+}
+#content{
+    height:500px ;
+    width: 70%;
+    border: #5bffdb solid 5px;
+    float: left;
+}
+#footer{
+    height:100px ;
+    border: #ff2df1 solid 5px;
+    clear: both;
+}
+p{
+    text-align: center;
+}
