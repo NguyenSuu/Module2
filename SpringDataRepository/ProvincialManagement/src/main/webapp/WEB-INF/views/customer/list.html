@@ -6,13 +6,18 @@
 <body>
 <header th:replace="/customer/layout::menu"></header>
 
+<th:block th:if="${message}">
+    <div class="alert-success" style="text-align: center">
+        <p th:text="${message}"></p>
+    </div>
+</th:block>
+
 <div class="container-fluid">
     <div class="row">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                 <h1 class="h2">Customer</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
-<!--                    <a href="/create-customer" class="btn btn-primary">Create new customer</a>-->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formCreate">Create
                         new customer
                     </button>
@@ -69,37 +74,34 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <!--                <th:block th:if="${message}">-->
-                <!--                    <p th:text="${message}"></p>-->
-                <!--                </th:block>-->
-                <form th:action="@{/create-customer}" th:object="${customer}" method="post">
+                <form th:action="@{/}" th:object="${customer}" method="post">
                     <div class="container">
                         <div class="row">
                             <div class="col-4"><label class="mb-2 mr-sm-2">First name:</label></div>
-                            <div class="col-8"> <input type="text" th:field="*{firstName}"/></div>
+                            <div class="col-8"><input type="text" th:field="*{firstName}"/></div>
                         </div>
                         <div class="row">
-                            <div class="col-4"> <label class="mb-2 mr-sm-2">Last name:</label></div>
+                            <div class="col-4"><label class="mb-2 mr-sm-2">Last name:</label></div>
                             <div class="col-8"><input type="text" th:field="*{lastName}"/></div>
                         </div>
                         <div class="row">
                             <div class="col-4">Province:</div>
-                            <div class="col-8"> <select th:field="*{province}">
+                            <div class="col-8"><select th:field="*{province}">
                                 <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
                             </select></div>
                         </div>
                         <div class="row">
                             <div class="col-4"></div>
                             <div class="col-4"><input type="submit" class="btn btn-info" value="Create"></div>
-                            <div class="col-4" ><button type="button" class="btn btn-danger" data-dismiss="modal">Close</button></div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-<!--                <input type="submit" class="btn btn-info" value="Create">-->
-<!--                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
             </div>
 
         </div>

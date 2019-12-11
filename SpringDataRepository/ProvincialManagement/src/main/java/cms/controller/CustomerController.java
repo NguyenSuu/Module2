@@ -10,9 +10,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 
 
 @Controller
@@ -38,17 +40,15 @@ public class CustomerController {
         return modelAndView;
     }
 
-//    @GetMapping("/create-customer")
-//    public ModelAndView showCreateForm(){
-//        ModelAndView modelAndView = new ModelAndView("/customer/create");
-//        modelAndView.addObject("customer", new Customer());
-//        return modelAndView;
-//    }
-
-    @PostMapping("/create-customer")
-    public String saveCustomer(@ModelAttribute("customer") Customer customer){
+    //Save customer
+    @PostMapping("/")
+    public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer){
         customerService.save(customer);
-        return "redirect:/";
+        Iterable<Customer>customers=customerService.findAll();
+        ModelAndView modelAndView=new ModelAndView("/customer/list");
+        modelAndView.addObject("customers",customers);
+        modelAndView.addObject("message","New customer created successfully!");
+        return modelAndView;
     }
 
     @GetMapping("/edit-customer/{id}")

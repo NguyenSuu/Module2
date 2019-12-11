@@ -23,21 +23,16 @@ public class ProvinceController {
         Iterable<Province> provinces=provinceService.findAll();
         ModelAndView modelAndView=new ModelAndView("/province/list");
         modelAndView.addObject("provinces",provinces);
+        modelAndView.addObject("province",new Province());
         return modelAndView;
     }
-    @GetMapping("/create-province")
-    public ModelAndView showCreateForm(){
-        ModelAndView modelAndView = new ModelAndView("/province/create");
-        modelAndView.addObject("province", new Province());
-        return modelAndView;
-    }
-
-    @PostMapping("/create-province")
+    //Save province
+    @PostMapping("/provinces")
     public ModelAndView saveProvince(@ModelAttribute("province") Province province){
         provinceService.save(province);
-
-        ModelAndView modelAndView = new ModelAndView("/province/create");
-        modelAndView.addObject("province", new Province());
+        Iterable<Province> provinces=provinceService.findAll();
+        ModelAndView modelAndView = new ModelAndView("/province/list");
+        modelAndView.addObject("provinces",provinces);
         modelAndView.addObject("message", "New province created successfully");
         return modelAndView;
     }
