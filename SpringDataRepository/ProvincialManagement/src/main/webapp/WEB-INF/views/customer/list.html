@@ -86,9 +86,11 @@
                         </div>
                         <div class="row">
                             <div class="col-4">Province:</div>
-                            <div class="col-8"><select th:field="*{province}">
+                            <div class="col-8">
+                                <select th:field="*{province}">
                                 <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
-                            </select></div>
+                                </select>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-4"></div>
